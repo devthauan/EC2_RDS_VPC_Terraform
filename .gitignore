@@ -5,6 +5,7 @@
 *.tfstate
 *.tfstate.*
 *.tfstate.lock.*
+*terraform.*
 
 # SSH Key
 *.pem
