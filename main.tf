@@ -34,7 +34,7 @@ resource "aws_route_table" "public_route_table" {
 
 # Associates the public subnet to the route table that connects it to the internet
 resource "aws_route_table_association" "custom_public_subnet_route_association"{
-    subnet_id = aws_subnet.public_subnet
+    subnet_id = aws_subnet.public_subnet.id
     route_table_id = aws_route_table.public_route_table.id
 }
 
@@ -77,8 +77,8 @@ resource "aws_security_group" "allow_ssh_http" {
 
   ingress {
     description = "HTTP to EC2"
-    from_port   = 80
-    to_port     = 80
+    from_port   = 8080
+    to_port     = 8080
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
