@@ -113,18 +113,3 @@ resource "aws_security_group" "allow_ec2_call_RDS" {
     Name = "allow_EC2_call_RDS"
   }
 }
-
-# EC2 Instance
-resource "aws_instance" "projeto2" {
-    ami                         = "ami-0fb4cf3a99aa89f72" // sa-east-1 ubuntu server  AMI
-    instance_type               = "t2.micro"
-    key_name                    = var.ssh_key_name
-    vpc_security_group_ids      = [aws_security_group.allow_ssh_http.id]
-    associate_public_ip_address = true
-    subnet_id                   = aws_subnet.public_subnet.id
-
-    tags = {
-        Name = "projeto2"
-    }
-  
-}
